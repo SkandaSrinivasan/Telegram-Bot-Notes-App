@@ -1,5 +1,6 @@
 {
   "name": "notes-server",
+  
   "version": "1.0.0",
   "description": "Api server for notes in mongo",
   "main": "index.js",
