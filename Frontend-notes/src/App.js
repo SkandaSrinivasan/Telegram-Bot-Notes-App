@@ -1,4 +1,4 @@
-
+import './App.css'
 import { useState, useEffect } from 'react'
 import noteService from './services/notes.js'
 import { Card, Button, Container, Row, Col } from 'react-bootstrap'
@@ -7,15 +7,12 @@ function App() {
   const [notesList, setNotesList] = useState([])
 
   useEffect(() => {
-    console.log(notesList)
     noteService.getAll()
       .then((notes) => {
         setNotesList(notes)
-        console.log('notes are', notesList)
       })
       .catch((err) => {
         console.error('err in fetching: ', err)
-        console.log('wtf is noteslist ', notesList)
       })
   }, [])
 
@@ -26,12 +23,12 @@ function App() {
     setNotesList(updatedList)
   }
   return (
-    <div>
+    <div class='outer'>
       <Container fluid>
         <Row>
           {notesList.map((note, index) => {
-            return (<Col>
-              <Card key={note.id} style={{ width: '18rem' }}>
+            return (<Col key={note.id}>
+              <Card text='light' border='warning' bg='dark' key={note.id} style={{ width: '18rem' }}>
                 <Card.Body>
                   <Card.Title>#{index + 1}</Card.Title>
                   <Card.Text>
